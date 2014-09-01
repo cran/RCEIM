@@ -121,21 +121,17 @@ points(po$BestMember[1], po$BestMember[2], col="red", pch=19, cex=0.5)
 rm(list=c('xx','yy','zz'))
 
 # Example of multicore processing
-# Due to the multicore package dependency, 
-# this will run only if the OS is not Windows
-if(Sys.info()["sysname"] != "Windows") {
-  slowFunction <- function(x) { 
-    p<-runif(100000)
-    return((x+3)^2)
-  } 
-  system.time(po <- ceimOpt(OptimFunction="slowFunction", maxIter=10,
+slowFunction <- function(x) { 
+  p<-runif(50000)
+  return((x+3)^2)
+} 
+system.time(po <- ceimOpt(OptimFunction="slowFunction", maxIter=10,
     Ntot=100, epsilon=0.3, nParams=1, verbose=FALSE, parallel=FALSE))
-  print(po$BestMember)
-  system.time(po <- ceimOpt(OptimFunction="slowFunction", maxIter=10,
+print(po$BestMember)
+system.time(po <- ceimOpt(OptimFunction="slowFunction", maxIter=10,
     Ntot=100, epsilon=0.3, nParams=1, verbose=FALSE, parallel=TRUE))
-  print(po$BestMember)
-  rm(po)
-}
+print(po$BestMember)
+rm(po)
 }
 
 \keyword{ optimize }

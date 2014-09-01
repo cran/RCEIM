@@ -124,12 +124,14 @@ ceimOpt <- function(OptimFunction="testFunOptimization", nParams=1,
 		
 		# Now compute S (the fitness) for each individual
 		if(parallelVersion){
-			library(multicore)
-			pp <- mclapply(1:Ntot, function(x) {Sfunc(param_Estimated[x,])})						         
-			for(i in 1:Ntot) {
-				#Svals[i] <- mfactor * Sfunc(param_Estimated[i,])
-				Svals[i] <- mfactor * pp[[i]]
-			}
+      if(requireNamespace("parallel", quietly=TRUE)) {
+			  #library(parallel)
+			  pp <- parallel::mclapply(1:Ntot, function(x) {Sfunc(param_Estimated[x,])})						         
+			  for(i in 1:Ntot) {
+				  #Svals[i] <- mfactor * Sfunc(param_Estimated[i,])
+			  	Svals[i] <- mfactor * pp[[i]]
+			  }
+      }
 		} else {
 			for(i in 1:Ntot) {
 				Svals[i] <- mfactor * Sfunc(param_Estimated[i,])
@@ -252,7 +254,7 @@ ceimOpt <- function(OptimFunction="testFunOptimization", nParams=1,
 	# We are returning the best individual. Some people believe that the average should be returned... 
 	# why? simple, with the average you have a estimate of the error (the st.dev.), while with the best
 	# you don't... but you know that the best individual is "better" than the average, and we want 
-	# the best solution we can provide!!! Now we should think about how to estimate an error for this 
-	# "best" individual...
+	# the best solution we can provide. Now one should think about how to estimate an error for this 
+	# "best" individual.
 	return(list(BestMember=unlist(elite[1,1:(nParams+1)]), Convergence=Convergence, Criteria=Crit, Iterations=iter, EliteMembers=elite))
 }
