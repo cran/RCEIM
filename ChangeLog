@@ -1,4 +1,10 @@
 
+0.3
+
+* Updated to correct some NOTES issued during the automated R tests. 
+
+* Minor modifications in the documentation.
+
 0.2
 
 * Updated to use parallel (before this version, multicore was adopted for parallel processing).

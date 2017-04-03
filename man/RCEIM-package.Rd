@@ -13,8 +13,8 @@ RCEIM is a package implementing a stochastic heuristic method for performing mul
 \tabular{ll}{
 Package: \tab RCEIM\cr
 Type: \tab Package\cr
-Version: \tab 0.2\cr
-Date: \tab 2013-09-01\cr
+Version: \tab 0.3\cr
+Date: \tab 2015-02-19\cr
 License: \tab GPL (>= 2)\cr
 }
 RCEIM implements a simple stochastic heuristic method for optimization in the function \code{\link{ceimOpt}}. This method starts from a random population of solutions, computes the values of the function and selects a fraction of these solutions - the elite members. Afterwards, based on the elite members it creates a gaussian distribution, samples new random solutions from it, and iterates until convergence is reached (this is controlled by an epsilon parameter) or other stopping criteria is fulfilled (such as the maximum number of iterations).
@@ -22,13 +22,13 @@ RCEIM implements a simple stochastic heuristic method for optimization in the fu
 One advantage of this method is that it does not impose strong conditions on the function to be optimized. The function must written as an R function, but it does not need to be continuous, differentiable, neither analytic. Moreover, the method is ready for multicore processing, enabling the optimization of time-consuming functions.
 
 \if{html}{\figure{RCEIM-Problems.jpg}{RCEIM-Problems}}
-\if{latex}{\figure{RCEIM-Problems.pdf}{options: width=5.3in}}
+\if{latex}{\figure{RCEIM-Problems.pdf}{options: width=4.5in}}
 
 Two examples of 1D and 2D functions that can be used as test problems for RCEIM (defined in \code{\link{testFunOptimization}} and \code{\link{testFunOptimization2d}}) are represented in the above figures.
 
 }
 \author{
-Alberto Krone-Martins
+Alberto Krone-Martins, Laurent Gallucio
 
 Maintainer: Alberto Krone-Martins <algol@sim.ul.pt>
 }

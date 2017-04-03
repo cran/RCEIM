@@ -5,7 +5,7 @@
 Sorting a data frame by a key
 }
 \description{
-A simple function to sort a data frame based on a certain keyword. This function was posted by r-fanatic at \url{http://snippets.dzone.com/posts/show/470}.
+A simple function to sort a data frame based on a certain keyword. This function was posted by r-fanatic at a dzone forum (the webpage is not available anymore).
 }
 \usage{
 sortDataFrame(x, key, ...)
@@ -26,7 +26,7 @@ sortDataFrame(x, key, ...)
 The sorted data frame.
 }
 \references{
-\url{http://snippets.dzone.com/posts/show/470}.
+The original webpage where r-fanatic posted the code is not available as of 3rd April 2017.
 }
 \author{
 r-fanatic
